@@ -1,0 +1,33 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "db-migrate",
+      "image": "909606877169.dkr.ecr.us-east-1.amazonaws.com/dockerzon/dockerzon:latest",
+      "command": ["./bin/rake", "db:migrate"],
+      "memory": 300,
+      "environment": [
+        {
+          "name": "RAILS_ENV",
+          "value": "production"
+        },
+        {
+          "name": "DATABASE_URL",
+          "value": "postgresql://dockerzon:intergalacticzebramoldfactory@dockerzon-production.cxfe3ousfm48.us-east-1.rds.amazonaws.com:5432/dockerzon?encoding=utf8&pool=40&timeout=5000"
+        },
+        {
+          "name": "CACHE_URL",
+          "value": "redis://dockerzon-production.ybjdaq.0001.use1.cache.amazonaws.com:6379"
+        },
+        {
+          "name": "JOB_WORKER_URL",
+          "value": "redis://dockerzon-production.ybjdaq.0001.use1.cache.amazonaws.com:6379"
+        },
+        {
+          "name": "SECRET_TOKEN",
+          "value": "802be0711fe107d0898c4fc05b15b9ed217fc14fa25ceffaedca60e9effbe4e0fa0aabce8634b69e758c4fda3ba145be626822f2e2f6a59abcb2835803ec4522"
+        }
+      ]
+    }
+  ],
+  "family": "db-migrate"
+}
